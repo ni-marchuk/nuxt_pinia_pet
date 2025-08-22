@@ -24,7 +24,10 @@
     <!-- Mobile content end -->
     <div class="apartment-list-row__item apartment-list-row__item--layout">
       <div class="apartment-list-row__layout">
-        <nuxt-img :src="apartment.img" />
+        <nuxt-img
+          :src="`${config.public.baseURL}/${apartment.img}`"
+          alt="изображение квартиры"
+        />
       </div>
     </div>
     <div class="apartment-list-row__item apartment-list-row__item--type">
@@ -57,6 +60,7 @@
 import BaseTypography from '#shared/ui/BaseTypography/BaseTypography.vue'
 import { RUB_SYMBOL, SQUARE_SYMBOL } from '#shared/constants'
 import { formatPrice } from '#shared/helpers/formatPrice'
+const config = useRuntimeConfig()
 
 export type Apartment = {
   id: number
@@ -79,7 +83,7 @@ defineProps<{
 .apartment-list-row {
   display: flex;
   padding: var(--spacing-lg) 0 var(--spacing-xl) 0;
-  border-bottom: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border);
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.2s ease;
@@ -140,8 +144,8 @@ defineProps<{
     padding: var(--spacing-lg) var(--spacing-xl) var(--spacing-lg)
       var(--spacing-xl);
     justify-content: space-between;
+    border: 1px solid var(--color-border);
     border-radius: var(--border-radius-sm);
-    border: 1px solid var(--color-border-light);
   }
 
   .apartment-list-row__item--mobile {

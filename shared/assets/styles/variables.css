@@ -1,28 +1,44 @@
 :root {
   /* Цвета */
-  --color-primary: #4CAF50;
-  --color-primary-dark: #388E3C;
-  --color-primary-light: #C8E6C9;
-  --color-text-primary: #333333;
-  --color-text-secondary: #666666;
-  --color-background: #F5F5F5;
-  --color-white: #FFFFFF;
-  --color-border: #E0E0E0;
-  --color-border-light: #E9ECEF;
-  --color-hover: #F8F9FA;
-  
-  /* Размеры */
+  --color-primary: #95d0a1;
+  --color-primary-dark: #3eb57c;
+  --main-linear-gradient: linear-gradient(
+    135deg,
+    rgba(174, 228, 178, 0.3) 0%,
+    rgba(149, 208, 161, 0.3) 100%
+  );
+  --color-white: #ffffff;
+  --color-grey-light: #e0dfdf;
+
+  --color-text-primary: #0e1639;
+  --color-text-secondary: #868b9c;
+
+  --color-border: #0000001a;
+  --color-border-secondary-button: #0b173933;
+
+  /* Размеры и отступы */
+  --border-radius-sm: 4px;
   --border-radius: 8px;
-  --border-radius-small: 4px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+  --border-radius-round: 50%;
+
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 12px;
   --spacing-lg: 16px;
   --spacing-xl: 24px;
-  
+  --spacing-xxl: 32px;
+  --spacing-xxxl: 48px;
+
   /* Тени */
-  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
-  
+  --shadow-light-green: 0px 6px 20px 0px #95d0a1;
+
   /* Максимальная ширина контента */
   --max-width: 1440px;
-} 
+
+  /* не из макета добавил в хедер и о себе просто для демонстрации работы с layouts */
+  --color-background: #f5f5f5;
+  /* не из макета добавил посчитав нужным выделить apartment item */
+  --color-hover: #f8f9fa;
+}

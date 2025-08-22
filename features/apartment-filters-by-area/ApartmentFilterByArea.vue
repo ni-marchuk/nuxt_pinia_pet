@@ -1,20 +1,23 @@
 <template>
-  <section class="apartment-filters-by-price__section">
+  <section
+    class="apartment-filters-by-area__section"
+    aria-label="Выбрать диапазон площади квартир"
+  >
     <BaseTypography
       variant="h4"
       tag="h4"
-      class="apartment-filters-by-price__section-title"
+      class="apartment-filters-by-area__section-title"
     >
-      Стоимость квартиры, {{ RUB_SYMBOL }}
+      Площадь, {{ SQUARE_SYMBOL }}
     </BaseTypography>
     <RangeSlider
-      v-model="priceRange"
+      v-model="areaRange"
       :min="min"
       :max="max"
       :step="step"
-      :label-from="`${priceRange.min}`"
-      :label-to="`${priceRange.max}`"
-      @update:model-value="updatePriceRange"
+      :label-from="`${areaRange.min}`"
+      :label-to="`${areaRange.max}`"
+      @update:model-value="updateAreaRange"
     />
   </section>
 </template>
@@ -24,7 +27,7 @@ import { ref } from 'vue'
 import { useDebounce } from '#shared/composables/useDebounce/useDebounce'
 import RangeSlider from '#shared/ui/RangeSlider/RangeSlider.vue'
 import BaseTypography from '#shared/ui/BaseTypography/BaseTypography.vue'
-import { RUB_SYMBOL } from '#shared/constants'
+import { SQUARE_SYMBOL } from '#shared/constants'
 
 const debounce = useDebounce()
 
@@ -40,37 +43,36 @@ const props = defineProps<{
   step?: number
 }>()
 
-const emit = defineEmits<{ handleChangePriceFilter: [range: RangeValue] }>()
+const emit = defineEmits<{ handleChangeAreaFilter: [range: RangeValue] }>()
 
-const priceRange = ref({ ...(props.range ?? { min: props.min, max: props.max }) })
+const areaRange = ref({
+  ...(props.range ?? { min: props.min, max: props.max }),
+})
 
 watch(
   () => props.range,
   (newFilters) => {
-    priceRange.value = { ...(newFilters ?? { min: props.min, max: props.max }) }
+    areaRange.value = { ...(newFilters ?? { min: props.min, max: props.max }) }
   },
   { deep: true },
 )
 
-const updatePriceRange = (value: RangeValue) => {
-  priceRange.value = value
+const updateAreaRange = (value: RangeValue) => {
+  areaRange.value = value
 
-  debounce(() =>
-    emit('handleChangePriceFilter', { min: priceRange.value.min, max: priceRange.value.max }),
+  debounce(
+    () =>
+      emit('handleChangeAreaFilter', {
+        min: areaRange.value.min,
+        max: areaRange.value.max,
+      }),
+    1000,
   )
 }
 </script>
 
 <style scoped>
-.apartment-filters-by-price__section {
-  margin-bottom: var(--spacing-xl);
-}
-
-.apartment-filters-by-price__section:last-child {
-  margin-bottom: 0;
-}
-
-.apartment-filters-by-price__section-title {
+.apartment-filters-by-area__section-title {
   margin: 0 0 var(--spacing-sm) 0;
   font-size: 14px;
   font-weight: 500;

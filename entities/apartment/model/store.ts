@@ -1,60 +1,78 @@
 import { defineStore } from 'pinia'
-import type { ApartmentFilters, ApartmentState } from './types'
-import { DEFAULT_FILTERS } from './const'
+import type {
+  ApartmentFilters,
+  ApartmentsSorting,
+  ApartmentState,
+} from './types'
+import { AREA_MAX, AREA_MIN, PRICE_MAX, PRICE_MIN } from './const'
 import { fetchApartments as fetchApartmentsService } from '../service'
+import { queryToParams } from '../model/helpers/queryToParams'
 
 export const useApartmentStore = defineStore('apartment', {
   state: (): ApartmentState => ({
     apartments: [],
-    filters: { ...DEFAULT_FILTERS },
-    loading: false,
-    hasMore: true
+    params: {},
+    priceRange: {
+      min: PRICE_MIN,
+      max: PRICE_MAX,
+    },
+    areaRange: {
+      min: AREA_MIN,
+      max: AREA_MAX,
+    },
+    isLoading: false,
   }),
 
-  getters: {
-    filteredApartments: (state) => {
-      return state.apartments.filter(apartment => {
-        if (state.filters.rooms.length > 0) {
-          const roomCount = parseInt(apartment.type.split('-')[0] || '0')
-          if (!state.filters.rooms.includes(roomCount)) {
-            return false
-          }
-        }
-
-        if (apartment.price < state.filters.priceRange.min || 
-            apartment.price > state.filters.priceRange.max) {
-          return false
-        }
-
-        if (apartment.area < state.filters.areaRange.min || 
-            apartment.area > state.filters.areaRange.max) {
-          return false
-        }
-
-        return true
-      })
-    }
-  },
-
   actions: {
-    async fetchApartments() {
-      this.loading = true
-      try {
-        const apartments = await fetchApartmentsService()
-        this.apartments = apartments
-      } catch (error) {
-        console.error('Error fetching apartments:', error)
-      } finally {
-        this.loading = false
+    initParamsFromQuery(query: Record<string, any>) {
+      const parsed = queryToParams(query)
+      this.params = {
+        ...this.params,
+        ...(parsed.pagination && { pagination: parsed.pagination }),
+        ...(parsed.sorting && { sorting: parsed.sorting }),
+        ...(parsed.filters && {
+          filters: {
+            ...this.params.filters,
+            ...parsed.filters,
+          },
+        }),
       }
     },
 
+    async fetchApartments() {
+      try {
+        this.isLoading = true
+        const { data, meta } = await fetchApartmentsService(this.params)
+
+        if (meta) this.params = meta
+        if (data) this.apartments = data
+
+        return data
+      } catch (error) {
+        console.error(error)
+        return error
+      } finally {
+        this.isLoading = false
+      }
+    },
+
+    updatePagination(pagination: MetaPagination) {
+      this.params.pagination = pagination
+    },
+
+    updateSorting(sorting: MetaSorting<ApartmentsSorting> | null) {
+      this.params.sorting = sorting ?? {}
+    },
+
     updateFilters(filters: Partial<ApartmentFilters>) {
-      this.filters = { ...this.filters, ...filters }
+      this.params.filters = {
+        ...this.params.filters,
+        ...filters,
+      }
     },
 
     resetFilters() {
-      this.filters = { ...DEFAULT_FILTERS }
-    }
-  }
-}) 
+      this.params.filters = {}
+    },
+  },
+})

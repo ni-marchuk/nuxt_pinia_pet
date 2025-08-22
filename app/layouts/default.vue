@@ -1,45 +1,73 @@
 <template>
   <div class="layout">
     <header class="header">
-      <nav class="nav">
-        <NuxtLink to="/" class="nav-link">🏠 Home</NuxtLink>
-        <NuxtLink to="/counter" class="nav-link">🔢 Counter</NuxtLink>
-        <NuxtLink to="/users" class="nav-link">👥 Users</NuxtLink>
+      <nav class="nav" aria-label="Главное меню">
+        <ul class="nav-list">
+          <li class="nav-list__item">
+            <BaseTypography variant="h3" color="secondary">
+              Квартирный Вопрос
+            </BaseTypography>
+          </li>
+          <li class="nav-list__item">
+            <NuxtLink to="/" class="nav-link">
+              <BaseTypography variant="caption" color="primary">
+                Главная
+              </BaseTypography>
+            </NuxtLink>
+          </li>
+          <li class="nav-list__item">
+            <NuxtLink to="/about" class="nav-link">
+              <BaseTypography variant="caption" color="primary">
+                Об авторе
+              </BaseTypography>
+            </NuxtLink>
+          </li>
+        </ul>
       </nav>
     </header>
-    <main class="container">
+    <main>
       <slot />
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
+import BaseTypography from '#shared/ui/BaseTypography/BaseTypography.vue'
 </script>
 
 <style>
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
-}
-
 .header {
-  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-background);
   backdrop-filter: blur(6px);
   padding: 1rem 2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: var(--spacing-xxxl);
 }
 
 .nav {
   display: flex;
-  gap: 1.5rem;
   align-items: center;
+  width: 100%;
+  max-width: var(--max-width);
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: var(--spacing-lg);
+}
+
+.nav-list__item {
+  display: flex;
 }
 
 .nav-link {
-  color: white;
+  color: black;
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem 1rem;
@@ -57,7 +85,7 @@ body {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.container {
-  padding: 2rem;
+.nav-link.router-link-active p {
+  color: var(--color-primary-dark);
 }
-</style> 
+</style>

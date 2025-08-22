@@ -2,7 +2,7 @@
   {
     "id": 1,
     "rooms": 3,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "104",
     "area": 63.1,
     "floor": 1,
@@ -13,7 +13,7 @@
   {
     "id": 2,
     "rooms": 3,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "105",
     "area": 63.2,
     "floor": 2,
@@ -24,7 +24,7 @@
   {
     "id": 3,
     "rooms": 2,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "106",
     "area": 45.8,
     "floor": 1,
@@ -35,7 +35,7 @@
   {
     "id": 4,
     "rooms": 1,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "107",
     "area": 33.5,
     "floor": 3,
@@ -46,7 +46,7 @@
   {
     "id": 5,
     "rooms": 3,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "108",
     "area": 63.1,
     "floor": 5,
@@ -57,7 +57,7 @@
   {
     "id": 6,
     "rooms": 2,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "109",
     "area": 48.2,
     "floor": 4,
@@ -68,7 +68,7 @@
   {
     "id": 7,
     "rooms": 1,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "110",
     "area": 35.8,
     "floor": 6,
@@ -79,7 +79,7 @@
   {
     "id": 8,
     "rooms": 4,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "111",
     "area": 85.3,
     "floor": 7,
@@ -90,7 +90,7 @@
   {
     "id": 9,
     "rooms": 4,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "112",
     "area": 35.3,
     "floor": 7,
@@ -101,7 +101,7 @@
   {
     "id": 10,
     "rooms": 2,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "113",
     "area": 52.6,
     "floor": 8,
@@ -112,7 +112,7 @@
   {
     "id": 11,
     "rooms": 1,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "114",
     "area": 29.8,
     "floor": 9,
@@ -123,7 +123,7 @@
   {
     "id": 12,
     "rooms": 3,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "115",
     "area": 70.4,
     "floor": 10,
@@ -134,7 +134,7 @@
   {
     "id": 13,
     "rooms": 2,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "116",
     "area": 54.7,
     "floor": 11,
@@ -145,7 +145,7 @@
   {
     "id": 14,
     "rooms": 4,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "117",
     "area": 92.5,
     "floor": 12,
@@ -156,7 +156,7 @@
   {
     "id": 15,
     "rooms": 3,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "118",
     "area": 68.2,
     "floor": 13,
@@ -167,7 +167,7 @@
   {
     "id": 16,
     "rooms": 1,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "119",
     "area": 31.1,
     "floor": 14,
@@ -178,7 +178,7 @@
   {
     "id": 17,
     "rooms": 2,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "120",
     "area": 50.9,
     "floor": 15,
@@ -189,7 +189,7 @@
   {
     "id": 18,
     "rooms": 3,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "121",
     "area": 66.7,
     "floor": 16,
@@ -200,7 +200,7 @@
   {
     "id": 19,
     "rooms": 4,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "122",
     "area": 95.8,
     "floor": 17,
@@ -211,7 +211,7 @@
   {
     "id": 20,
     "rooms": 2,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "123",
     "area": 49.5,
     "floor": 1,
@@ -222,7 +222,7 @@
   {
     "id": 21,
     "rooms": 3,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "124",
     "area": 64.0,
     "floor": 2,
@@ -233,7 +233,7 @@
   {
     "id": 22,
     "rooms": 1,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "125",
     "area": 28.7,
     "floor": 3,
@@ -244,7 +244,7 @@
   {
     "id": 23,
     "rooms": 4,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "126",
     "area": 88.4,
     "floor": 4,
@@ -255,7 +255,7 @@
   {
     "id": 24,
     "rooms": 2,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "127",
     "area": 52.1,
     "floor": 5,
@@ -266,7 +266,7 @@
   {
     "id": 25,
     "rooms": 3,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "128",
     "area": 69.3,
     "floor": 6,
@@ -277,7 +277,7 @@
   {
     "id": 26,
     "rooms": 1,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "129",
     "area": 34.2,
     "floor": 7,
@@ -288,7 +288,7 @@
   {
     "id": 27,
     "rooms": 2,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "130",
     "area": 55.7,
     "floor": 8,
@@ -299,7 +299,7 @@
   {
     "id": 28,
     "rooms": 3,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "131",
     "area": 71.9,
     "floor": 9,
@@ -310,7 +310,7 @@
   {
     "id": 29,
     "rooms": 4,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "132",
     "area": 90.6,
     "floor": 10,
@@ -321,7 +321,7 @@
   {
     "id": 30,
     "rooms": 2,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "133",
     "area": 53.4,
     "floor": 11,
@@ -332,7 +332,7 @@
   {
     "id": 31,
     "rooms": 1,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "134",
     "area": 30.5,
     "floor": 12,
@@ -343,7 +343,7 @@
   {
     "id": 32,
     "rooms": 3,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "135",
     "area": 67.8,
     "floor": 1,
@@ -354,7 +354,7 @@
   {
     "id": 33,
     "rooms": 2,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "136",
     "area": 50.2,
     "floor": 2,
@@ -365,7 +365,7 @@
   {
     "id": 34,
     "rooms": 4,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "137",
     "area": 86.5,
     "floor": 3,
@@ -376,7 +376,7 @@
   {
     "id": 35,
     "rooms": 3,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "138",
     "area": 72.3,
     "floor": 4,
@@ -387,7 +387,7 @@
   {
     "id": 36,
     "rooms": 1,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "139",
     "area": 33.7,
     "floor": 5,
@@ -398,7 +398,7 @@
   {
     "id": 37,
     "rooms": 2,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "140",
     "area": 54.6,
     "floor": 6,
@@ -409,7 +409,7 @@
   {
     "id": 38,
     "rooms": 3,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "141",
     "area": 69.5,
     "floor": 7,
@@ -420,7 +420,7 @@
   {
     "id": 39,
     "rooms": 4,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "142",
     "area": 94.2,
     "floor": 8,
@@ -431,7 +431,7 @@
   {
     "id": 40,
     "rooms": 2,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "143",
     "area": 56.3,
     "floor": 9,
@@ -442,7 +442,7 @@
   {
     "id": 41,
     "rooms": 1,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "144",
     "area": 32.1,
     "floor": 1,
@@ -453,7 +453,7 @@
   {
     "id": 42,
     "rooms": 3,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "145",
     "area": 68.9,
     "floor": 2,
@@ -464,7 +464,7 @@
   {
     "id": 43,
     "rooms": 2,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "146",
     "area": 51.8,
     "floor": 3,
@@ -475,7 +475,7 @@
   {
     "id": 44,
     "rooms": 4,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "147",
     "area": 89.7,
     "floor": 4,
@@ -486,7 +486,7 @@
   {
     "id": 45,
     "rooms": 3,
-    "img": "/apartment_plug.png",
+    "img": "images/apartment_plug.png",
     "number": "148",
     "area": 73.2,
     "floor": 5,

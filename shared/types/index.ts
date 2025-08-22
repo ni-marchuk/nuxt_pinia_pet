@@ -1,41 +1,26 @@
-// Типы для пользователей
-export interface User {
-  id: number
-  name: string
-  email: string
-  isActive: boolean
+export type DefaultResponse<T, S> = {
+  data: T | null
+  meta: S | null
+  status: 'success' | 'error' | null // null это initial state для использования в формах
+  error: DefaultResponseError | null
 }
 
-// Типы для счетчика
-export interface CounterState {
-  count: number
-  name: string
+export type MetaPagination = {
+  total?: number
+  totalPages?: number
+  page?: number
+  perPage?: number
+  offset?: number
 }
 
-// Типы для состояния пользователей
-export interface UserState {
-  users: User[]
-  currentUser: User | null
-  loading: boolean
+export type MetaSorting<T> = {
+  sortBy?: T
+  order?: 'asc' | 'desc'
 }
 
-// Типы для API ответов
-export interface ApiResponse<T> {
-  data: T
-  success: boolean
-  message?: string
+export type DefaultResponseError = {
+  title: string
+  message: string
+  details: { field: string; value: string; code?: number }[]
+  code?: number
 }
-
-// Типы для пагинации
-export interface PaginationParams {
-  page: number
-  limit: number
-}
-
-export interface PaginatedResponse<T> {
-  data: T[]
-  total: number
-  page: number
-  limit: number
-  totalPages: number
-} 

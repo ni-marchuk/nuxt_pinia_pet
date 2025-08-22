@@ -1,6 +1,17 @@
-// Константы для пагинации
-export const PAGINATION = {
-  DEFAULT_PAGE: 1,
-  DEFAULT_LIMIT: 10,
-  MAX_LIMIT: 100
-} as const
+import type { DefaultResponse, DefaultResponseError } from '#shared/types'
+
+export const EMPTY_DEFAULT_RESPONSE: DefaultResponse<never, never> = {
+  data: null,
+  meta: null,
+  status: null,
+  error: null,
+}
+
+export const EMPTY_DEFAULT_RESPONSE_ERROR: DefaultResponseError = {
+  title: 'Ошибка',
+  message: '',
+  details: [],
+}
+
+export const RUB_SYMBOL = '₽'
+export const SQUARE_SYMBOL = 'м²'

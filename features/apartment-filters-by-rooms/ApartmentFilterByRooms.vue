@@ -1,81 +1,61 @@
 <template>
-  <section class="apartment-filters-by-area__section">
-    <BaseTypography
-      variant="h4"
-      tag="h4"
-      class="apartment-filters-by-area__section-title"
-    >
-      Площадь, {{ SQUARE_SYMBOL }}
-    </BaseTypography>
-    <RangeSlider
-      v-model="areaRange"
-      :min="min"
-      :max="max"
-      :step="step"
-      :label-from="`${areaRange.min}`"
-      :label-to="`${areaRange.max}`"
-      @update:model-value="updateAreaRange"
-    />
+  <section
+    class="apartment-filters-by-rooms"
+    aria-label="Выбрать количество комнат"
+  >
+    <div class="apartment-filters-by-rooms__buttons">
+      <CheckboxButton
+        v-for="room in Array.from({ length: MAX_ROOMS_COUNT }, (_, i) => i + 1)"
+        :key="room"
+        :checked="rooms?.includes(room)"
+        @handle-check="handleToggleRoom(room)"
+      >
+        <p>{{ room }}к</p>
+      </CheckboxButton>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { MAX_ROOMS_COUNT } from '~/entities/apartment/model/const'
 import { useDebounce } from '#shared/composables/useDebounce/useDebounce'
-import RangeSlider from '#shared/ui/RangeSlider/RangeSlider.vue'
-import BaseTypography from '#shared/ui/BaseTypography/BaseTypography.vue'
-import { SQUARE_SYMBOL } from '#shared/constants'
+import CheckboxButton from '#shared/ui/CheckboxButton/CheckboxButton.vue'
 
 const debounce = useDebounce()
 
-export type RangeValue = {
-  min: number
-  max: number
+type ApartmentFilterByRoomsProps = {
+  rooms?: number[]
 }
+const props = defineProps<ApartmentFilterByRoomsProps>()
 
-const props = defineProps<{
-  range?: RangeValue
-  min: number
-  max: number
-  step?: number
-}>()
+const emit = defineEmits<{ handleChangeRoomsFilter: [rooms: number[]] }>()
 
-const emit = defineEmits<{ handleChangeAreaFilter: [range: RangeValue] }>()
-
-const areaRange = ref({ ...(props.range ?? { min: props.min, max: props.max }) })
+const rooms = ref(props.rooms ?? [])
 
 watch(
-  () => props.range,
-  (newFilters) => {
-    areaRange.value = { ...(newFilters ?? { min: props.min, max: props.max }) }
+  () => props.rooms,
+  (newRooms) => {
+    rooms.value = [...(newRooms ?? [])]
   },
   { deep: true },
 )
 
-const updateAreaRange = (value: RangeValue) => {
-  areaRange.value = value
+const handleToggleRoom = (room: number) => {
+  const index = rooms.value.indexOf(room)
+  if (index > -1) {
+    rooms.value.splice(index, 1)
+  } else {
+    rooms.value.push(room)
+  }
 
-  debounce(() =>
-    emit('handleChangeAreaFilter', { min: areaRange.value.min, max: areaRange.value.max }),
-  )
+  debounce(() => emit('handleChangeRoomsFilter', rooms.value), 1200)
 }
 </script>
 
 <style scoped>
-/*
-.apartment-filters-by-area__section {
-  margin-bottom: var(--spacing-xl);
-}
-
-.apartment-filters-by-area__section:last-child {
-  margin-bottom: 0;
-}
-*/
-
-.apartment-filters-by-area__section-title {
-  margin: 0 0 var(--spacing-sm) 0;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--color-text-primary);
+.apartment-filters-by-rooms__buttons {
+  display: flex;
+  gap: var(--spacing-lg);
 }
 </style>

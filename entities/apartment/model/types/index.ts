@@ -1,6 +1,9 @@
-export interface Apartment {
-  id: string
-  type: string
+import type { MetaPagination, MetaSorting } from '#shared/types'
+
+export type Apartment = {
+  id: number
+  rooms: number
+  img: string
   number: string
   area: number
   floor: number
@@ -9,20 +12,29 @@ export interface Apartment {
   layout: string
 }
 
-export interface RangeValue {
+export type RangeValue = {
   min: number
   max: number
 }
 
-export interface ApartmentFilters {
-  rooms: number[]
-  priceRange: RangeValue
-  areaRange: RangeValue
+export type ApartmentFilters = {
+  rooms?: number[]
+  priceRange?: RangeValue
+  areaRange?: RangeValue
 }
 
-export interface ApartmentState {
+export type ApartmentsSorting = 'area' | 'floor' | 'price'
+
+export type FetchApartmentsParams = {
+  pagination?: MetaPagination
+  sorting?: MetaSorting<ApartmentsSorting>
+  filters?: Partial<ApartmentFilters>
+}
+
+export type ApartmentState = {
   apartments: Apartment[]
-  filters: ApartmentFilters
-  loading: boolean
-  hasMore: boolean
-} 
+  params: FetchApartmentsParams
+  priceRange: RangeValue
+  areaRange: RangeValue
+  isLoading: boolean
+}

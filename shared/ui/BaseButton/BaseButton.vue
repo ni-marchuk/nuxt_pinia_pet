@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<Props>(), {
   variant: 'primary',
   size: 'md',
   disabled: false,
-  type: 'button'
+  type: 'button',
 })
 
 defineEmits<{
@@ -34,7 +34,7 @@ const buttonClasses = computed(() => [
   'button',
   `button--${props.variant}`,
   `button--${props.size}`,
-  { 'button--disabled': props.disabled }
+  { 'button--disabled': props.disabled },
 ])
 </script>
 
@@ -44,7 +44,7 @@ const buttonClasses = computed(() => [
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: var(--border-radius-small);
+  border-radius: var(--border-radius-sm);
   cursor: pointer;
   font-family: inherit;
   font-weight: 500;
@@ -53,7 +53,7 @@ const buttonClasses = computed(() => [
 }
 
 .button--primary {
-  background: var(--color-primary);
+  background: var(--color-primary-dark);
   color: var(--color-white);
 }
 
@@ -62,8 +62,10 @@ const buttonClasses = computed(() => [
 }
 
 .button--secondary {
-  background: var(--color-border);
   color: var(--color-text-primary);
+  background: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-border-secondary-button);
 }
 
 .button--secondary:hover:not(.button--disabled) {
@@ -72,33 +74,35 @@ const buttonClasses = computed(() => [
 }
 
 .button--outline {
-  background: transparent;
   color: var(--color-text-primary);
-  border: 1px solid var(--color-border);
+  background: transparent;
+  border: transparent;
+  border: 1px solid transparent;
 }
 
 .button--outline:hover:not(.button--disabled) {
-  background: var(--color-hover);
-  border-color: var(--color-text-secondary);
+  background: transparent;
+  border-color: transparent;
+  border: 1px solid var(--color-border);
 }
 
 .button--sm {
-  padding: var(--spacing-xs) var(--spacing-sm);
-  font-size: 12px;
-}
-
-.button--md {
-  padding: var(--spacing-sm) var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-md);
   font-size: 14px;
 }
 
-.button--lg {
-  padding: var(--spacing-md) var(--spacing-xl);
+.button--md {
+  padding: var(--spacing-sm) var(--spacing-xl);
   font-size: 16px;
+}
+
+.button--lg {
+  padding: var(--spacing-md) var(--spacing-xxl);
+  font-size: 18px;
 }
 
 .button--disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
-</style> 
+</style>

@@ -1,8 +1,5 @@
 <template>
-  <component
-    :is="tag"
-    :class="typographyClasses"
-  >
+  <component :is="tag" :class="typographyClasses">
     <slot />
   </component>
 </template>
@@ -10,7 +7,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 interface Props {
-  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'body' | 'caption' | 'button'
+  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'md' | 'body' | 'caption' | 'button'
   tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span' | 'div'
   color?: 'primary' | 'secondary'
   weight?: 'normal' | 'medium' | 'semibold' | 'bold'
@@ -18,16 +15,16 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   variant: 'body',
-  tag: 'div',
+  tag: 'p',
   color: 'primary',
-  weight: 'normal'
+  weight: 'normal',
 })
 
 const typographyClasses = computed(() => [
   'typography',
   `typography--${props.variant}`,
   `typography--${props.color}`,
-  `typography--${props.weight}`
+  `typography--${props.weight}`,
 ])
 </script>
 
@@ -56,6 +53,10 @@ const typographyClasses = computed(() => [
 .typography--h4 {
   font-size: 14px;
   font-weight: 500;
+}
+
+.typography--md {
+  font-size: 16px;
 }
 
 .typography--body {
@@ -94,4 +95,4 @@ const typographyClasses = computed(() => [
 .typography--bold {
   font-weight: 700;
 }
-</style> 
+</style>

@@ -1,92 +1,112 @@
 <template>
   <section class="apartment-list">
     <header class="apartment-list__header">
-      <Typography variant="h2" tag="h2">Квартиры</Typography>
-      <Typography v-if="loading" variant="body" color="secondary">Загрузка...</Typography>
+      <BaseTypography variant="h1" tag="h1" weight="bold"
+        >Квартиры</BaseTypography
+      >
     </header>
 
-    <div class="apartment-list__table-container">
-      <table class="apartment-list__table">
-        <ApartmentListHeader />
-        <tbody class="apartment-list__tbody">
-          <ApartmentListRow
-            v-for="apartment in filteredApartments"
-            :key="apartment.id"
-            :apartment="apartment"
-          />
-        </tbody>
-      </table>
+    <ApartmentListHeader
+      :sorting="sorting"
+      @handle-change-sort="(sort) => $emit('handleChangeSort', sort)"
+    />
 
-      <div v-if="filteredApartments.length === 0 && !loading" class="apartment-list__empty">
-        <Typography variant="body" color="secondary">Квартиры не найдены</Typography>
+    <div class="apartment-list__content">
+      <div class="apartment-list__items">
+        <ApartmentListRow
+          v-for="apartment in apartments"
+          :key="apartment.id"
+          :apartment="apartment"
+        />
       </div>
-    </div>
-
-    <div v-if="hasMore && filteredApartments.length > 0" class="apartment-list__load-more">
-      <BaseButton
-        variant="outline"
-        :disabled="loading"
-        @click="loadMore"
-      >
-        {{ loading ? 'Загрузка...' : 'Загрузить еще' }}
-      </BaseButton>
+      <div v-if="apartments.length === 0" class="apartment-list__plug">
+        <BaseTypography variant="body" color="secondary">
+          Квартиры не найдены
+        </BaseTypography>
+      </div>
+      <div v-if="hasMore" class="apartment-list__load-more">
+        <BaseButton
+          class="apartment-list__load-more-btn"
+          aria-label="Загрузить еще"
+          variant="secondary"
+          size="md"
+          :disabled="loading"
+          @click="$emit('handleLoadMore')"
+        >
+          {{ loading ? 'Загрузка...' : 'Загрузить еще' }}
+        </BaseButton>
+      </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useApartmentStore } from '~/entities/apartment/model/store'
-import Typography from '~/shared/ui/Typography/Typography.vue'
-import BaseButton from '~/shared/ui/BaseButton/BaseButton.vue'
-import ApartmentListHeader from './ApartmentListHeader.vue'
-import ApartmentListRow from './ApartmentListRow.vue'
+import type { Sorting } from '~/features/apartment-list/ui/ApartmentListHeader.vue'
+import type { Apartment } from '~/features/apartment-list/ui/ApartmentListRow.vue'
+import {
+  type Order,
+  type SortBy,
+} from '~/features/apartment-list/ui/ApartmentListHeaderSort.vue'
+import ApartmentListHeader from './ui/ApartmentListHeader.vue'
+import ApartmentListRow from './ui/ApartmentListRow.vue'
+import BaseTypography from '#shared/ui/BaseTypography/BaseTypography.vue'
+import BaseButton from '#shared/ui/BaseButton/BaseButton.vue'
 
-const store = useApartmentStore()
+const { apartments } = defineProps<{
+  sorting?: Sorting
+  loading: boolean
+  hasMore: boolean
+  apartments: Apartment[]
+}>()
 
-const filteredApartments = computed(() => store.filteredApartments)
-const loading = computed(() => store.loading)
-const hasMore = computed(() => store.hasMore)
-
-const loadMore = () => {
-  console.log('Loading more apartments...')
-}
-
+defineEmits<{
+  handleChangeSort: [{ sortBy: SortBy; order: Order } | null]
+  handleLoadMore: []
+}>()
 </script>
 
 <style scoped>
 .apartment-list {
-  flex: 1;
-  min-width: 0;
+  display: flex;
 }
 
 .apartment-list__header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: var(--spacing-xl);
+  flex-direction: column;
+  margin-bottom: var(--spacing-xxxl);
 }
 
-.apartment-list__table-container {
-  background: var(--color-white);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-light);
+.apartment-list__content {
+  display: flex;
+  flex-direction: column;
 }
 
-.apartment-list__table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-
-.apartment-list__empty {
-  padding: 48px var(--spacing-xl);
-  text-align: center;
+.apartment-list__items {
+  display: flex;
+  flex-direction: column;
 }
 
 .apartment-list__load-more {
-  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xxl);
+}
+
+.apartment-list__load-more-btn {
+  width: 100%;
+  max-width: 164px;
+}
+
+.apartment-list__plug {
+  padding: var(--spacing-xxxl) var(--spacing-xl);
   text-align: center;
 }
-</style> 
+
+@media (max-width: 1399px) {
+  .apartment-list__header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .apartment-list__items {
+    gap: var(--spacing-xs);
+  }
+}
+</style>

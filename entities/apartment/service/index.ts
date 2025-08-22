@@ -1,7 +1,11 @@
-import type { Apartment } from '../model/types'
-import { mockApartments } from '../model/mocks/apartments'
+import type { Apartment, FetchApartmentsParams } from '../model/types'
+import { paramsToQuery } from '../model/helpers/paramsToQuery'
+import type { DefaultResponse } from '#shared/types'
 
-export async function fetchApartments(): Promise<Apartment[]> {
-  await new Promise(resolve => setTimeout(resolve, 500))
-  return mockApartments
-} 
+export async function fetchApartments(
+  params: FetchApartmentsParams,
+): Promise<DefaultResponse<Apartment[], FetchApartmentsParams>> {
+  return await $fetch('/api/apartments', {
+    params: paramsToQuery(params),
+  })
+}

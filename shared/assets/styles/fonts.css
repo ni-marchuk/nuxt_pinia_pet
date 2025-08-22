@@ -1,29 +1,18 @@
-:root {
-  /* Цвета */
-  --color-primary: #4CAF50;
-  --color-primary-dark: #388E3C;
-  --color-primary-light: #C8E6C9;
-  --color-text-primary: #333333;
-  --color-text-secondary: #666666;
-  --color-background: #F5F5F5;
-  --color-white: #FFFFFF;
-  --color-border: #E0E0E0;
-  --color-border-light: #E9ECEF;
-  --color-hover: #F8F9FA;
-  
-  /* Размеры и отступы */
-  --border-radius: 8px;
-  --border-radius-small: 4px;
-  --border-radius-round: 50%;
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 12px;
-  --spacing-lg: 16px;
-  --spacing-xl: 24px;
-  
-  /* Тени */
-  --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
-  
-  /* Максимальная ширина контента */
-  --max-width: 1440px;
+@font-face {
+  font-family: 'PT Root UI';
+  src:
+    url('../fonts/pt-root-ui_regular.woff2') format('woff2'),
+    url('../fonts/pt-root-ui_regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PT Root UI';
+  src:
+    url('../fonts/pt-root-ui_bold.woff2') format('woff2'),
+    url('../fonts/pt-root-ui_bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }

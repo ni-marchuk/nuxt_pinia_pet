@@ -2,25 +2,39 @@
   <div
     :class="{
       'apartment-list-header-sortable': true,
-      'active':isActive
+      active: isActive,
     }"
   >
     <BaseTypography variant="body" color="primary" weight="normal">
       {{ title }}
     </BaseTypography>
     <div class="apartment-list-header-sortable__icons-wrapper">
-      <ArrowUp
-        :class="{
-              'apartment-list-header-sortable__icon': true,
-              'active': isActive && order === 'asc'
-            }"
-      />
-      <ArrowDown
-        :class="{
-              'apartment-list-header-sortable__icon': true,
-              'active': isActive && order === 'asc'
-            }"
-      />
+      <button
+        class="icon-button"
+        type="button"
+        aria-label="Сортировать по возрастанию"
+        @click="handleSort('asc')"
+      >
+        <ArrowUp
+          :class="{
+            'apartment-list-header-sortable__icon': true,
+            active: isActive && order === 'asc',
+          }"
+        />
+      </button>
+      <button
+        class="icon-button"
+        type="button"
+        aria-label="Сортировать по убыванию"
+        @click="handleSort('desc')"
+      >
+        <ArrowDown
+          :class="{
+            'apartment-list-header-sortable__icon': true,
+            active: isActive && order === 'desc',
+          }"
+        />
+      </button>
     </div>
   </div>
 </template>
@@ -30,20 +44,35 @@ import ArrowUp from '#shared/assets/icons/arrow_up.svg'
 import ArrowDown from '#shared/assets/icons/arrow_down.svg'
 import BaseTypography from '#shared/ui/BaseTypography/BaseTypography.vue'
 
-const { title, order, isActive } = defineProps<{
+export type Order = 'asc' | 'desc'
+export type SortBy = 'area' | 'floor' | 'price'
+
+const { title, isActive, order, sortBy } = defineProps<{
   title: string
-  order?: 'asc' | 'desc'
   isActive: boolean
+  order?: Order
+  sortBy: SortBy
 }>()
 
+const emit = defineEmits<{
+  handleChangeSort: [{ sortBy: SortBy; order: Order } | null]
+}>()
+
+const handleSort = (newOrder: Order) => {
+  if (order !== newOrder) emit('handleChangeSort', { sortBy, order: newOrder })
+  if (order === newOrder) emit('handleChangeSort', null)
+}
 </script>
 
 <style scoped>
-
 .apartment-list-header-sortable {
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+
+.apartment-list-header-sortable.active p {
+  color: var(--color-primary-dark);
 }
 
 .apartment-list-header-sortable__icons-wrapper {
@@ -55,14 +84,17 @@ const { title, order, isActive } = defineProps<{
 }
 
 .apartment-list-header-sortable__icon {
-  opacity: 0.6;
   margin: 0;
   width: 7px;
   height: 4px;
+  color: var(--color-text-secondary);
 }
 
 .apartment-list-header-sortable__icon:hover {
-  opacity: 1;
+  color: var(--color-primary-dark);
+}
+
+.apartment-list-header-sortable__icon.active {
   color: var(--color-primary-dark);
 }
 </style>

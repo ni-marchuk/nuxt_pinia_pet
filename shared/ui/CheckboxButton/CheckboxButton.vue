@@ -3,7 +3,7 @@
     :class="checkboxButtonClasses"
     :disabled="disabled"
     type="button"
-    @click="$emit('toggle')"
+    @click="$emit('handleCheck')"
   >
     <slot />
   </button>
@@ -19,46 +19,55 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   checked: false,
-  disabled: false
+  disabled: false,
 })
 
 defineEmits<{
-  toggle: []
+  handleCheck: []
 }>()
 
 const checkboxButtonClasses = computed(() => [
   'checkbox-button',
   { 'checkbox-button--checked': props.checked },
-  { 'checkbox-button--disabled': props.disabled }
+  { 'checkbox-button--disabled': props.disabled },
 ])
 </script>
 
 <style scoped>
 .checkbox-button {
-  flex: 1;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  border: 1px solid var(--color-border);
-  background: var(--color-border);
-  border-radius: var(--border-radius-small);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--color-white);
+  border-radius: var(--border-radius-round);
+  border-width: 0;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px;
   transition: all 0.2s ease;
   color: var(--color-text-primary);
+  box-shadow: var(--shadow-light-green);
 }
 
 .checkbox-button:hover:not(.checkbox-button--disabled) {
-  background: var(--color-text-secondary);
+  background: var(--color-primary-dark);
+  color: var(--color-white);
+}
+
+.checkbox-button:hover:not(.checkbox-button--disabled) p {
   color: var(--color-white);
 }
 
 .checkbox-button--checked {
-  background: var(--color-primary);
+  background: var(--color-primary-dark);
   color: var(--color-white);
-  border-color: var(--color-primary);
 }
 
 .checkbox-button--disabled {
   opacity: 0.6;
+  color: var(--color-text-secondary);
   cursor: not-allowed;
 }
-</style> 
+</style>

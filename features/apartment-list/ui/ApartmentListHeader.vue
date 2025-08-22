@@ -13,83 +13,51 @@
       </BaseTypography>
     </div>
     <div class="apartment-list-header__item apartment-list-header__item--area">
-      <div class="apartment-list-header__sortable">
-        <BaseTypography variant="body" color="primary" weight="normal">
-          S, {{ SQUARE_SYMBOL }}
-        </BaseTypography>
-        <div class="apartment-list-header__sortable-wrapper">
-          <ArrowUp
-            :class="{
-              'apartment-list-header__sort-icon': true,
-              'active': sorting?.sortBy === 'area' && sorting?.order === 'asc'
-            }"
-          />
-          <ArrowDown
-            :class="{
-              'apartment-list-header__sort-icon': true,
-              'active': sorting?.sortBy === 'area' && sorting?.order === 'desc'
-            }"
-          />
-        </div>
-      </div>
+      <ApartmentListHeaderSort
+        :is-active="sorting?.sortBy === 'area'"
+        :title="`S, ${SQUARE_SYMBOL}`"
+        :order="sorting?.order"
+        :sort-by="'area'"
+        @handle-change-sort="(sort) => $emit('handleChangeSort', sort)"
+      />
     </div>
     <div class="apartment-list-header__item apartment-list-header__item--floor">
-      <div class="apartment-list-header__sortable">
-        <BaseTypography variant="body" color="primary" weight="normal"
-        >Этаж
-        </BaseTypography>
-        <div class="apartment-list-header__sortable-wrapper">
-          <ArrowUp
-            :class="{
-              'apartment-list-header__sort-icon': true,
-              'active': sorting?.sortBy === 'floor' && sorting?.order === 'asc'
-            }"
-          />
-          <ArrowDown
-            :class="{
-              'apartment-list-header__sort-icon': true,
-              'active': sorting?.sortBy === 'floor' && sorting?.order === 'desc'
-            }"
-          />
-        </div>
-      </div>
+      <ApartmentListHeaderSort
+        :is-active="sorting?.sortBy === 'floor'"
+        :title="'Этаж'"
+        :order="sorting?.order"
+        :sort-by="'floor'"
+        @handle-change-sort="(sort) => $emit('handleChangeSort', sort)"
+      />
     </div>
     <div class="apartment-list-header__item apartment-list-header__item--price">
-      <div class="apartment-list-header__sortable">
-        <BaseTypography variant="body" color="primary" weight="normal"
-        >Цена, {{ RUB_SYMBOL }}
-        </BaseTypography>
-        <div class="apartment-list-header__sortable-wrapper">
-          <ArrowUp
-            :class="{
-              'apartment-list-header__sort-icon': true,
-              'active': sorting?.sortBy === 'price' && sorting?.order === 'asc'
-            }"
-          />
-          <ArrowDown
-            :class="{
-              'apartment-list-header__sort-icon': true,
-              'active': sorting?.sortBy === 'price' && sorting?.order === 'desc'
-            }"
-          />
-        </div>
-      </div>
+      <ApartmentListHeaderSort
+        :is-active="sorting?.sortBy === 'price'"
+        :title="`Цена, ${RUB_SYMBOL}`"
+        :order="sorting?.order"
+        :sort-by="'price'"
+        @handle-change-sort="(sort) => $emit('handleChangeSort', sort)"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { RUB_SYMBOL, SQUARE_SYMBOL } from '#shared/constants'
-import ArrowUp from '#shared/assets/icons/arrow_up.svg'
-import ArrowDown from '#shared/assets/icons/arrow_down.svg'
+import ApartmentListHeaderSort, {
+  type Order,
+  type SortBy,
+} from '~/features/apartment-list/ui/ApartmentListHeaderSort.vue'
 import BaseTypography from '#shared/ui/BaseTypography/BaseTypography.vue'
 import type { MetaSorting } from '#shared/types'
+import { RUB_SYMBOL, SQUARE_SYMBOL } from '#shared/constants'
 
-type ApartmentsSorting = 'area' | 'floor' | 'price'
+export type Sorting = MetaSorting<SortBy>
+
 const { sorting } = defineProps<{
-  sorting?: MetaSorting<ApartmentsSorting>
+  sorting?: Sorting
 }>()
 
+defineEmits<{ handleChangeSort: [{ sortBy: SortBy; order: Order } | null] }>()
 </script>
 
 <style scoped>
@@ -97,7 +65,7 @@ const { sorting } = defineProps<{
   display: flex;
   align-items: center;
   padding-bottom: var(--spacing-lg);
-  border-bottom: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border);
   font-size: 14px;
 }
 
@@ -127,32 +95,6 @@ const { sorting } = defineProps<{
 .apartment-list-header__item--price {
   flex: 1 0 100px;
   justify-content: flex-start;
-}
-
-.apartment-list-header__sortable {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.apartment-list-header__sortable-wrapper {
-  display: flex;
-  flex-direction: column;
-  color: var(--color-text-secondary);
-  margin-left: var(--spacing-md);
-  gap: 2px;
-}
-
-.apartment-list-header__sort-icon {
-  opacity: 0.6;
-  margin: 0;
-  width: 7px;
-  height: 4px;
-}
-
-.apartment-list-header__sort-icon:hover {
-  opacity: 1;
-  color: var(--color-primary-dark);
 }
 
 @media (max-width: 1399px) {
