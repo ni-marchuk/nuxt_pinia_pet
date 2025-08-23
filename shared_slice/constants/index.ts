@@ -1,4 +1,4 @@
-import type { DefaultResponse, DefaultResponseError } from '#shared/types'
+import type { DefaultResponse, DefaultResponseError } from '~/shared_slice/types'
 
 export const EMPTY_DEFAULT_RESPONSE: DefaultResponse<never, never> = {
   data: null,

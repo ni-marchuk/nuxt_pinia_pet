@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import BaseTypography from '#shared/ui/BaseTypography/BaseTypography.vue'
+import BaseTypography from '~/shared_slice/ui/BaseTypography/BaseTypography.vue'
 </script>
 
 <style scoped>

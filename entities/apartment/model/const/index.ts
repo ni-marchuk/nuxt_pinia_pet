@@ -3,7 +3,7 @@ import type {
   ApartmentsSorting,
   FetchApartmentsParams,
 } from '../types'
-import type { MetaPagination, MetaSorting } from '#shared/types'
+import type { MetaPagination, MetaSorting } from '~/shared_slice/types'
 
 /** макс мин значения по сути нужно получать с бека (как минимум потому что пагинация и мы не знаем всех данных) */
 export const PRICE_MIN = 3_500_000

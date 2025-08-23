@@ -28,9 +28,17 @@ export default defineNuxtConfig({
     layouts: 'app/layouts',
     middleware: 'app/middleware',
     pages: 'pages',
-    assets: 'shared/assets',
-    public: 'shared/public',
+    assets: 'shared_slice/assets',
+    public: 'shared_slice/public',
   },
+
+  components: [
+    '~/shared_slice/ui',
+    // '~/entities/**/ui', // уберу пока не требуется, лишний warning
+    '~/features',
+    '~/widgets',
+    '~/pages'
+  ],
 
   serverDir: 'app/server',
 
@@ -48,13 +56,13 @@ export default defineNuxtConfig({
   },
 
   css: [
-    '#shared/assets/styles/global.css',
-    '#shared/assets/styles/variables.css',
-    '#shared/assets/styles/fonts.css',
+    '~/shared_slice/assets/styles/global.css',
+    '~/shared_slice/assets/styles/variables.css',
+    '~/shared_slice/assets/styles/fonts.css',
   ],
 
   image: {
-    dir: 'shared/assets/images',
+    dir: 'shared_slice/assets/images',
   },
 
   runtimeConfig: {

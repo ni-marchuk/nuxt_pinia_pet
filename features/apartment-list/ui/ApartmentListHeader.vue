@@ -47,9 +47,9 @@ import ApartmentListHeaderSort, {
   type Order,
   type SortBy,
 } from '~/features/apartment-list/ui/ApartmentListHeaderSort.vue'
-import BaseTypography from '#shared/ui/BaseTypography/BaseTypography.vue'
-import type { MetaSorting } from '#shared/types'
-import { RUB_SYMBOL, SQUARE_SYMBOL } from '#shared/constants'
+import BaseTypography from '~/shared_slice/ui/BaseTypography/BaseTypography.vue'
+import type { MetaSorting } from '~/shared_slice/types'
+import { RUB_SYMBOL, SQUARE_SYMBOL } from '~/shared_slice/constants'
 
 export type Sorting = MetaSorting<SortBy>
 

@@ -1,4 +1,4 @@
-import type { MetaPagination, MetaSorting } from '#shared/types'
+import type { MetaPagination, MetaSorting } from '~/shared_slice/types'
 
 export type Apartment = {
   id: number

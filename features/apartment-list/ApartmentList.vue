@@ -49,8 +49,8 @@ import {
 } from '~/features/apartment-list/ui/ApartmentListHeaderSort.vue'
 import ApartmentListHeader from './ui/ApartmentListHeader.vue'
 import ApartmentListRow from './ui/ApartmentListRow.vue'
-import BaseTypography from '#shared/ui/BaseTypography/BaseTypography.vue'
-import BaseButton from '#shared/ui/BaseButton/BaseButton.vue'
+import BaseTypography from '~/shared_slice/ui/BaseTypography/BaseTypography.vue'
+import BaseButton from '~/shared_slice/ui/BaseButton/BaseButton.vue'
 
 const { apartments } = defineProps<{
   sorting?: Sorting

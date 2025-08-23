@@ -1,9 +1,9 @@
 import type { Apartment } from '~/entities/apartment/model/types'
 import { DEFAULT_APARTMENT_PAGINATION } from '~/entities/apartment/model/const'
 import { queryToParams } from '~/entities/apartment/model/helpers/queryToParams'
-import apartments from '#shared/public/mocks/apartments.json'
-import type { MetaPagination } from '#shared/types'
-import { EMPTY_DEFAULT_RESPONSE } from '#shared/constants'
+import apartments from '~/shared_slice/public/mocks/apartments.json'
+import type { MetaPagination } from '~/shared_slice/types'
+import { EMPTY_DEFAULT_RESPONSE } from '~/shared_slice/constants'
 
 export default defineEventHandler((event) => {
   const query = getQuery(event)

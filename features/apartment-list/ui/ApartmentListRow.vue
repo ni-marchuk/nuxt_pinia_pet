@@ -57,9 +57,9 @@
 </template>
 
 <script setup lang="ts">
-import BaseTypography from '#shared/ui/BaseTypography/BaseTypography.vue'
-import { RUB_SYMBOL, SQUARE_SYMBOL } from '#shared/constants'
-import { formatPrice } from '#shared/helpers/formatPrice'
+import BaseTypography from '~/shared_slice/ui/BaseTypography/BaseTypography.vue'
+import { RUB_SYMBOL, SQUARE_SYMBOL } from '~/shared_slice/constants'
+import { formatPrice } from '~/shared_slice/helpers/formatPrice'
 const config = useRuntimeConfig()
 
 export type Apartment = {

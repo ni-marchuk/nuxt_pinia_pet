@@ -7,6 +7,7 @@ import type {
 import { AREA_MAX, AREA_MIN, PRICE_MAX, PRICE_MIN } from './const'
 import { fetchApartments as fetchApartmentsService } from '../service'
 import { queryToParams } from '../model/helpers/queryToParams'
+import type { MetaPagination, MetaSorting } from '~/shared_slice/types'
 
 export const useApartmentStore = defineStore('apartment', {
   state: (): ApartmentState => ({

@@ -24,10 +24,10 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useDebounce } from '#shared/composables/useDebounce/useDebounce'
-import RangeSlider from '#shared/ui/RangeSlider/RangeSlider.vue'
-import BaseTypography from '#shared/ui/BaseTypography/BaseTypography.vue'
-import { SQUARE_SYMBOL } from '#shared/constants'
+import { useDebounce } from '~/shared_slice/composables/useDebounce/useDebounce'
+import RangeSlider from '~/shared_slice/ui/RangeSlider/RangeSlider.vue'
+import BaseTypography from '~/shared_slice/ui/BaseTypography/BaseTypography.vue'
+import { SQUARE_SYMBOL } from '~/shared_slice/constants'
 
 const debounce = useDebounce()
 

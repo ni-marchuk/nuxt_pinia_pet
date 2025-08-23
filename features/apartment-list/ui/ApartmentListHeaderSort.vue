@@ -40,9 +40,9 @@
 </template>
 
 <script setup lang="ts">
-import ArrowUp from '#shared/assets/icons/arrow_up.svg'
-import ArrowDown from '#shared/assets/icons/arrow_down.svg'
-import BaseTypography from '#shared/ui/BaseTypography/BaseTypography.vue'
+import ArrowUp from '~/shared_slice/assets/icons/arrow_up.svg'
+import ArrowDown from '~/shared_slice/assets/icons/arrow_down.svg'
+import BaseTypography from '~/shared_slice/ui/BaseTypography/BaseTypography.vue'
 
 export type Order = 'asc' | 'desc'
 export type SortBy = 'area' | 'floor' | 'price'
