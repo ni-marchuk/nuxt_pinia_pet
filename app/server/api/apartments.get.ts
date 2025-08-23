@@ -73,6 +73,6 @@ export default defineEventHandler((event) => {
           filters: filters ?? {},
         },
       })
-    }, 750),
+    }, 250),
   )
 })
