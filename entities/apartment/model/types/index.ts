@@ -37,4 +37,6 @@ export type ApartmentState = {
   priceRange: RangeValue
   areaRange: RangeValue
   isLoading: boolean
+  isError: boolean
+  errorMessage: string
 }

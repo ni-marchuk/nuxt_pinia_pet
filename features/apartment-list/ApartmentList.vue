@@ -11,7 +11,7 @@
       @handle-change-sort="(sort) => $emit('handleChangeSort', sort)"
     />
 
-    <div class="apartment-list__content">
+    <div v-if="!isError" class="apartment-list__content">
       <div class="apartment-list__items">
         <ApartmentListRow
           v-for="apartment in apartments"
@@ -37,6 +37,11 @@
         </BaseButton>
       </div>
     </div>
+    <div v-else class="apartment-list__plug">
+      <BaseTypography variant="body" color="error">
+        {{errorMessage}}
+      </BaseTypography>
+    </div>
   </section>
 </template>
 
@@ -56,6 +61,8 @@ const { apartments } = defineProps<{
   sorting?: Sorting
   loading: boolean
   hasMore: boolean
+  isError: boolean
+  errorMessage: string
   apartments: Apartment[]
 }>()
 

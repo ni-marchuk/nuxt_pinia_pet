@@ -9,7 +9,7 @@ import { computed } from 'vue'
 interface Props {
   variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'md' | 'body' | 'caption' | 'button'
   tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span' | 'div'
-  color?: 'primary' | 'secondary'
+  color?: 'primary' | 'secondary' | 'error'
   weight?: 'normal' | 'medium' | 'semibold' | 'bold'
 }
 
@@ -78,6 +78,10 @@ const typographyClasses = computed(() => [
 
 .typography--secondary {
   color: var(--color-text-secondary);
+}
+
+.typography--error {
+  color: var(--color-text-error);
 }
 
 .typography--normal {

@@ -7,6 +7,8 @@ it('показывает plug, если список пуст', async () => {
     props: {
       loading: false,
       hasMore: false,
+      isError: false,
+      errorMessage: '',
       apartments: [],
     },
   })

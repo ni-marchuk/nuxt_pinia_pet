@@ -71,7 +71,10 @@ export default defineEventHandler((event) => {
           pagination: metaPagination,
           sorting: sorting ?? {},
           filters: filters ?? {},
-        },
+        }
+        // error: {
+        //   message: 'Какая то ошибка'
+        // }
       })
     }, 250),
   )

@@ -5,6 +5,8 @@
     :apartments="store.apartments"
     :has-more="hasMore"
     :loading="store.isLoading"
+    :is-error="store.isError"
+    :error-message="store.errorMessage"
     @handle-change-sort="handleChangeSort"
     @handle-load-more="handleLoadMore"
   />

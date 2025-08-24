@@ -40,11 +40,12 @@ useSeoMeta({
 const route = useRoute()
 const store = useApartmentStore()
 
-store.initParamsFromQuery(route.query)
-
-await callOnce('apartments', () => store.fetchApartments(), {
-  mode: 'navigation',
+await useAsyncData('apartments', async () => {
+  store.initParamsFromQuery(route.query)
+  await store.fetchApartments()
+  return true
 })
+
 </script>
 
 <style scoped>
