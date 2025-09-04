@@ -22,7 +22,7 @@ const defaultStore = {
   },
   isLoading: false,
   isError: false,
-  errorMessage: '',
+  errorMessage: ''
 }
 
 export const useApartmentStore = defineStore('apartment', {

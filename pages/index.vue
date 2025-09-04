@@ -15,16 +15,6 @@
 <script setup lang="ts">
 import { useApartmentStore } from '~/entities/apartment/model/store'
 
-useHead({
-  title: 'My App',
-  meta: [
-    { name: 'description', content: 'Поиск самых лучших квартир в Москве' },
-  ],
-  bodyAttrs: {
-    class: 'test',
-  },
-})
-
 useSeoMeta({
   title: 'Квартирный вопрос',
   ogTitle: 'Квартирный вопрос',
