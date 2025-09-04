@@ -21,7 +21,7 @@ import { ref } from 'vue'
 import { MAX_ROOMS_COUNT } from '~/entities/apartment/model/const'
 import { useDebounce } from '~/shared_slice/composables/useDebounce/useDebounce'
 
-const debounce = useDebounce()
+const { debounceFn } = useDebounce()
 
 type ApartmentFilterByRoomsProps = {
   rooms?: number[]
@@ -47,7 +47,7 @@ const handleToggleRoom = (room: number) => {
     rooms.value.push(room)
   }
 
-  debounce(() => emit('handleChangeRoomsFilter', rooms.value), 1200)
+  debounceFn(() => emit('handleChangeRoomsFilter', rooms.value), 1200)
 }
 </script>
 

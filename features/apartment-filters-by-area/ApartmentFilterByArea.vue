@@ -27,7 +27,7 @@ import { ref } from 'vue'
 import { useDebounce } from '~/shared_slice/composables/useDebounce/useDebounce'
 import { SQUARE_SYMBOL } from '~/shared_slice/constants'
 
-const debounce = useDebounce()
+const { debounceFn } = useDebounce()
 
 export type RangeValue = {
   min: number
@@ -58,7 +58,7 @@ watch(
 const updateAreaRange = (value: RangeValue) => {
   areaRange.value = value
 
-  debounce(
+  debounceFn(
     () =>
       emit('handleChangeAreaFilter', {
         min: areaRange.value.min,

@@ -27,7 +27,7 @@ import { ref } from 'vue'
 import { useDebounce } from '~/shared_slice/composables/useDebounce/useDebounce'
 import { RUB_SYMBOL } from '~/shared_slice/constants'
 
-const debounce = useDebounce()
+const { debounceFn } = useDebounce()
 
 export type RangeValue = {
   min: number
@@ -58,7 +58,7 @@ watch(
 const updatePriceRange = (value: RangeValue) => {
   priceRange.value = value
 
-  debounce(
+  debounceFn(
     () =>
       emit('handleChangePriceFilter', {
         min: priceRange.value.min,

@@ -1,32 +1,27 @@
-import { ref, onUnmounted } from 'vue'
-
-interface debounceParams {
-  fn: () => void
-  timeout?: number
-}
+import { effectScope, onScopeDispose } from 'vue'
 
 export const useThrottle = () => {
-  const isCalled = ref<boolean>(false)
-  const timeoutId = ref<ReturnType<typeof setTimeout> | null>(null)
+  const scope = effectScope()
+  let isCalled: boolean = false
+  let timeoutId: ReturnType<typeof setTimeout> | null = null
 
   const throttleFn = (
-    fn: debounceParams['fn'],
-    timeout: debounceParams['timeout'] = 500,
+    fn: () => void, timeout = 500,
   ) => {
-    if (!isCalled.value) {
-      isCalled.value = true
-      timeoutId.value = setTimeout(() => {
+    if (!isCalled) {
+      isCalled = true
+      timeoutId = setTimeout(() => {
         fn()
-        isCalled.value = false
+        isCalled = false
       }, timeout)
     }
   }
 
-  onUnmounted(() => {
-    if (timeoutId.value) {
-      clearTimeout(timeoutId.value)
-    }
+  scope.run(() => {
+    onScopeDispose(() => {
+      if (timeoutId) clearTimeout(timeoutId)
+    })
   })
 
-  return throttleFn
+  return { throttleFn, stop: () => scope.stop() }
 }
