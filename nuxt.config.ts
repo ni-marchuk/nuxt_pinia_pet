@@ -33,11 +33,10 @@ export default defineNuxtConfig({
   },
 
   components: [
-    '~/shared_slice/ui',
+    { path: '~/shared_slice/ui', pathPrefix: false },
     // '~/entities/**/ui', // уберу пока не требуется, лишний warning
-    '~/features',
-    '~/widgets',
-    '~/pages'
+    { path: '~/features', pathPrefix: false },
+    { path: '~/widgets', pathPrefix: false }
   ],
 
   serverDir: 'app/server',

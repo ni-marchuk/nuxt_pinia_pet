@@ -57,22 +57,11 @@
 </template>
 
 <script setup lang="ts">
-import BaseTypography from '~/shared_slice/ui/BaseTypography/BaseTypography.vue'
+import type { Apartment } from '../types'
 import { RUB_SYMBOL, SQUARE_SYMBOL } from '~/shared_slice/constants'
 import { formatPrice } from '~/shared_slice/helpers/formatPrice'
-const config = useRuntimeConfig()
 
-export type Apartment = {
-  id: number
-  rooms: number
-  img: string
-  number: string
-  area: number
-  floor: number
-  totalFloors: number
-  price: number
-  layout: string
-}
+const config = useRuntimeConfig()
 
 defineProps<{
   apartment: Apartment

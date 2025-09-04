@@ -44,9 +44,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import BaseTypography from '~/shared_slice/ui/BaseTypography/BaseTypography.vue'
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .about-page {

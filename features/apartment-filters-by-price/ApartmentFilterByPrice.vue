@@ -25,8 +25,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useDebounce } from '~/shared_slice/composables/useDebounce/useDebounce'
-import RangeSlider from '~/shared_slice/ui/RangeSlider/RangeSlider.vue'
-import BaseTypography from '~/shared_slice/ui/BaseTypography/BaseTypography.vue'
 import { RUB_SYMBOL } from '~/shared_slice/constants'
 
 const debounce = useDebounce()
@@ -72,12 +70,6 @@ const updatePriceRange = (value: RangeValue) => {
 </script>
 
 <style scoped>
-/*
-.apartment-filters-by-price {
-  margin-bottom: var(--spacing-xl);
-}
-*/
-
 .apartment-filters-by-price__title {
   margin: 0 0 var(--spacing-sm) 0;
   font-size: 14px;

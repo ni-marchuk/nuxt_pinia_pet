@@ -46,16 +46,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Sorting } from '~/features/apartment-list/ui/ApartmentListHeader.vue'
-import type { Apartment } from '~/features/apartment-list/ui/ApartmentListRow.vue'
-import {
-  type Order,
-  type SortBy,
-} from '~/features/apartment-list/ui/ApartmentListHeaderSort.vue'
-import ApartmentListHeader from './ui/ApartmentListHeader.vue'
-import ApartmentListRow from './ui/ApartmentListRow.vue'
-import BaseTypography from '~/shared_slice/ui/BaseTypography/BaseTypography.vue'
-import BaseButton from '~/shared_slice/ui/BaseButton/BaseButton.vue'
+import type { Apartment, Order, SortBy, Sorting } from './types'
 
 const { apartments } = defineProps<{
   sorting?: Sorting

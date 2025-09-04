@@ -14,9 +14,6 @@
 
 <script setup lang="ts">
 import { useApartmentStore } from '~/entities/apartment/model/store'
-import ScrollToTop from '~/features/scroll-to-top/ScrollToTop.vue'
-import ApartmentFilters from '~/widgets/apartment-filters/ApartmentFilters.vue'
-import ApartmentListWidget from '~/widgets/apartment-list-widget/ApartmentListWidget.vue'
 
 useHead({
   title: 'My App',

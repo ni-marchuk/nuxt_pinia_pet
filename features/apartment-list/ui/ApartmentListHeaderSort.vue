@@ -40,12 +40,10 @@
 </template>
 
 <script setup lang="ts">
+import type { Order, SortBy } from '../types'
 import ArrowUp from '~/shared_slice/assets/icons/arrow_up.svg'
 import ArrowDown from '~/shared_slice/assets/icons/arrow_down.svg'
-import BaseTypography from '~/shared_slice/ui/BaseTypography/BaseTypography.vue'
 
-export type Order = 'asc' | 'desc'
-export type SortBy = 'area' | 'floor' | 'price'
 
 const { title, isActive, order, sortBy } = defineProps<{
   title: string

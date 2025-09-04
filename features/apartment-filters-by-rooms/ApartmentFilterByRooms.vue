@@ -20,7 +20,6 @@
 import { ref } from 'vue'
 import { MAX_ROOMS_COUNT } from '~/entities/apartment/model/const'
 import { useDebounce } from '~/shared_slice/composables/useDebounce/useDebounce'
-import CheckboxButton from '~/shared_slice/ui/CheckboxButton/CheckboxButton.vue'
 
 const debounce = useDebounce()
 

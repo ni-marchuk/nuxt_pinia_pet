@@ -42,10 +42,6 @@
 import { useApartmentStore } from '~/entities/apartment/model/store'
 import { paramsToQuery } from '~/entities/apartment/model/helpers/paramsToQuery'
 import type { ApartmentFilters } from '~/entities/apartment/model/types'
-import ApartmentFilterByPrice from '~/features/apartment-filters-by-price/ApartmentFilterByPrice.vue'
-import ApartmentFilterByArea from '~/features/apartment-filters-by-area/ApartmentFilterByArea.vue'
-import ApartmentFilterByRooms from '~/features/apartment-filters-by-rooms/ApartmentFilterByRooms.vue'
-import BaseButton from '~/shared_slice/ui/BaseButton/BaseButton.vue'
 import Close from '~/shared_slice/assets/icons/cross_mini.svg'
 
 const PRICE_STEP = 50000

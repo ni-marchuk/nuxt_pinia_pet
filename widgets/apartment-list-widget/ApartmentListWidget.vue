@@ -16,11 +16,7 @@
 import { computed } from 'vue'
 import { useApartmentStore } from '~/entities/apartment/model/store'
 import { paramsToQuery } from '~/entities/apartment/model/helpers/paramsToQuery'
-import {
-  type Order,
-  type SortBy,
-} from '~/features/apartment-list/ui/ApartmentListHeaderSort.vue'
-import ApartmentList from '~/features/apartment-list/ApartmentList.vue'
+import type { Order, SortBy } from '~/features/apartment-list/types'
 
 const router = useRouter()
 const store = useApartmentStore()

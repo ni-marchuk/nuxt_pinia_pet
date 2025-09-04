@@ -43,21 +43,18 @@
 </template>
 
 <script setup lang="ts">
-import ApartmentListHeaderSort, {
-  type Order,
-  type SortBy,
-} from '~/features/apartment-list/ui/ApartmentListHeaderSort.vue'
-import BaseTypography from '~/shared_slice/ui/BaseTypography/BaseTypography.vue'
-import type { MetaSorting } from '~/shared_slice/types'
+import type { Order, SortBy, Sorting } from '../types'
 import { RUB_SYMBOL, SQUARE_SYMBOL } from '~/shared_slice/constants'
 
-export type Sorting = MetaSorting<SortBy>
 
 const { sorting } = defineProps<{
   sorting?: Sorting
 }>()
 
-defineEmits<{ handleChangeSort: [{ sortBy: SortBy; order: Order } | null] }>()
+defineEmits<{
+  handleChangeSort: [{ sortBy: SortBy; order: Order } | null]
+}>()
+
 </script>
 
 <style scoped>
