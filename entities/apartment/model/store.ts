@@ -37,7 +37,6 @@ export const useApartmentStore = defineStore('apartment', {
         ...(parsed.sorting && { sorting: parsed.sorting }),
         ...(parsed.filters && {
           filters: {
-            ...this.params.filters,
             ...parsed.filters,
           },
         }),

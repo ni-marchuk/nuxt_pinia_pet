@@ -37,8 +37,7 @@ watch(
   () => props.rooms,
   (newRooms) => {
     rooms.value = [...(newRooms ?? [])]
-  },
-  { deep: true },
+  }
 )
 
 const handleToggleRoom = (room: number) => {
